@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+
+@keyframes softBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-soft-bounce {
+  animation: softBounce 2s ease-in-out infinite;
+}
+
+
+body {
+background-color:#f4f9fa;
+}
+
+*{
+    
+
+    letter-spacing: 0.5px; 
+
+  
+}
+
+
+
+.custom-scroll {
+    direction: rtl; /* mettre  scroll  gauche */
+  }
+  
+  .custom-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(208, 199, 255, 0.4);
+    border-radius: 8px;
+  }
+  
+  .custom-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(190, 190, 190, 0.6);
+  }
+  
+  /* Remet le contenu en ltr  */
+  .custom-scroll > * {
+    direction: ltr;
+  }
+  
+
+  
+  
+  .customa-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .customa-scroll::-webkit-scrollbar-track {
+    background-color: rgba(13, 20, 92, 0.648);
+  }
+  
+  .customa-scroll::-webkit-scrollbar-thumb {
+     background-color: rgb(183, 209, 229);
+    border-radius: 8px;
+  }
+  
+  .customa-scroll:hover::-webkit-scrollbar-thumb {
+   background-color: rgba(240, 223, 255, 0.786);
+  }
+  
+  /* Remet le contenu en ltr  */
+  .customa-scroll > * {
+    direction: ltr;
+  }
+  
+
+
+  @keyframes glow-spin {
+    0% {
+      box-shadow: 0 0 0 0 rgba(228, 250, 255, 0.327);
+    }
+    25% {
+      box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.1);
+    }
+    75% {
+      box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .glow-ring {
+    animation: glow-spin 2s linear infinite;
+    border-radius: 9999px;
+  }
+  @media screen and (max-width:490px){
+    .bien {font-size: 8px;}
+    
+   
+ 
+
+ 
+}
+@media screen and (max-width:470px){
+  
+.soratra{font-size: 10px;} 
+
+
+
+}
+@media screen and (max-width:1025px){
+  .ba {width:198px ;height: 200px;}
+
+
+
+
+}
+@media screen and (max-width:905px){
+  .ba {width:198px ;height: 180px;}
+
+
+
+
+}
+@media screen and (max-width:490px){
+  .yes{margin-left: 2px;height: 270px;width: 300px;margin-top: -15px;}
+  .mamo{margin-left: 80px;}
+  .est{margin-left: 20px;}
+  .vs{margin-top: -5px;}
+  .ouest{
+    margin-left: 20px;
+    margin-bottom: 8px;
+    margin-top: -1px;
+  }
+  .str{display: none;}
+ .fg{gap: 5px;}
+ .stat{margin-top: 55px;}
+ .al{margin-left: 17px;}
+ .btt{margin-left: 2px;}
+ .use{display: none;}
+}
