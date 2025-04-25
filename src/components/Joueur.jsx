@@ -1,41 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import chamb from "../assets/wilt-chamberlain.jpg"
+import wilt from "../assets/wilt.jpg"
+import curry from "../assets/stp.webp"
+import stp from "../assets/steph.png"
+import kb from "../assets/kb.jpg"
+import kobe from "../assets/kobe.jpg"
 const cards = [
   {
     date: "06/01/1984",
-    image: "/images/card-1.jpg",
+    image:chamb ,
     title: "Wilt's 100-point game",
     description: "Wilt Chamberlain marque 100 points contre les Knicks, un record toujours inégalé.",
     youtube: "https://www.youtube.com/embed/K5VLz_ciou0",
     player: {
       name: "Wilt Chamberlain",
       position: "Center",
-      image: "/images/avatar-1.jpg",
+      image: wilt,
     },
   },
   {
     date: "22/01/2006",
-    image: "/images/card-5.jpg",
+    image: kb,
     title: "Kobe's 81-point game",
     description: "Kobe Bryant inscrit 81 points contre les Raptors, 2e meilleure performance de l'histoire.",
     youtube: "https://www.youtube.com/embed/fake-url-2",
     player: {
       name: "Kobe Bryant",
       position: "Shooting Guard",
-      image: "/images/avatar-2.jpg",
+      image: kobe,
     },
   },
   {
     date: "17/11/2016",
-    image: "/images/card-3.jpg",
+    image: curry,
     title: "Curry's 402 Three-pointers",
     description: "Stephen Curry établit un record de 402 tirs à trois points en une saison.",
     youtube: "https://www.youtube.com/embed/fake-url-3",
     player: {
       name: "Stephen Curry",
       position: "Point Guard",
-      image: "/images/avatar-3.jpg",
+      image: stp,
     },
   },
   {
@@ -459,7 +464,7 @@ export default function Joueur() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-15 mt-5" style={{ fontFamily: "'Urbanist', sans-serif" }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage} 
@@ -467,7 +472,7 @@ export default function Joueur() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
         >
           {paginatedCards.map((card, index) => (
             <div
@@ -481,13 +486,29 @@ export default function Joueur() {
               />
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div className="text-sm text-gray-500 mb-2">{card.date}</div>
+                <h2 className="font-semibold text-xl">{card.title}</h2>
+                <p className="text-sm text-gray-700">{card.description}</p>
+
+               
+                <div className="mt-8 flex items-center space-x-2 ">
+                  <img
+                    src={card.player.image}
+                    alt={card.player.name}
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <h3 className="text-sm font-medium">{card.player.name}</h3>
+                    <p className="text-xs text-gray-500">{card.player.position}</p>
+                  </div>
+                </div>
+
                 <button
                   onClick={() =>
                     setShowVideoIndex(showVideoIndex === index ? null : index)
                   }
-                  className="ml-auto mb-2 text-sm bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md"
+                  className="ml-auto sm:-mt-7 mt-2 mb-5 text-sm bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md"
                 >
-                  {showVideoIndex === index ? "Masquer" : "Voir plus"}
+                  {showVideoIndex === index ? "Masquer" : "Voir Vidéo"}
                 </button>
 
                 {showVideoIndex === index && (
@@ -496,40 +517,39 @@ export default function Joueur() {
                       width="100%"
                       height="315"
                       src={card.youtube}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
                   </div>
                 )}
-
-                <div className="text-lg font-semibold mt-2">{card.title}</div>
-                <div className="text-sm text-gray-500 mt-1">{card.description}</div>
               </div>
             </div>
           ))}
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex justify-between items-center mt-6">
+      {/* navig  */}
+      <div className="flex justify-between mt-15  text-[12px]">
         <button
           onClick={handlePrev}
           disabled={currentPage === 0}
-          className="bg-gray-200 text-sm text-gray-700 py-2 px-4 rounded-md disabled:bg-gray-300"
+          className="px-3 py-2 bg-gray-200 text-black rounded-md hover:scale-105 duration-400 hover:opacity-95"
         >
-          Précédent
+           &lt;  Précédent
         </button>
-        <div className="text-sm text-gray-500">
-          Page {currentPage + 1} sur {totalPages}
-        </div>
         <button
           onClick={handleNext}
           disabled={currentPage === totalPages - 1}
-          className="bg-gray-200 text-sm text-gray-700 py-2 px-4 rounded-md disabled:bg-gray-300"
+          className="px-4 py-2 bg-gray-200 text-black rounded-md hover:scale-105 duration-400 hover:opacity-80"
         >
-          Suivant
+          Suivant      &gt;
         </button>
+      </div>
+
+     
+      <div className="text-center sm:-mt-7 -mt-18 text-sm text-gray-500">
+        Page {currentPage + 1} sur {totalPages}
       </div>
     </div>
   );

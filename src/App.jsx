@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Nba from "./components/Nba";
 import Mq1 from './components/Mq';
 import Btn from './components/Jouer';
 import All from './components/All';
@@ -27,12 +28,13 @@ function App() {
             <All />
             <Photo /> 
             <Joueur />
-           
+          
+           <Nba />
             <br />
             <br />
             <br />
             <br />
-            
+              
             <Btn className='z-10' />
           </div>
         </div>
