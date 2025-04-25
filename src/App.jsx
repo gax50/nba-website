@@ -6,6 +6,7 @@ import Mq1 from './components/Mq';
 import Btn from './components/Jouer';
 import All from './components/All';
 import Photo from './components/Photo';
+import Joueur from "./components/Joueur";
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             
             <All />
             <Photo /> 
+            <Joueur />
            
             <br />
             <br />
