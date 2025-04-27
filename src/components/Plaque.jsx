@@ -9,16 +9,16 @@ const Plaque = () => {
     
       <div className="flex items-center gap-3 mb-8 opacity-90">
         <img src={logo} alt="NbaVision Logo" className="h-7 w-7 object-contain" />
-        <h1 className="text-2xl font-bold text-gray-700">Nba <span className='text-blue-500'>Vision</span> </h1>
+        <h1 className="text-2xl font-bold text-gray-800">Nba <span className='text-blue-500'>Vision</span> </h1>
       </div>
 
       
-      <p className="text-gray-500 text-xl mb-16 font-semibold">
+      <p className="text-gray-500 sm:text-xl text-sm mb-16 font-semibold">
         Le site parfait pour tous les fans de NBA.
       </p>
 
       {/* plq */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 px-25 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:px-25 px-5 mt-4">
 
         {/*  1 */}
         <div className="bg-white/40 backdrop-blur-md rounded-2xl shadow-md p-6 flex flex-col items-center text-center hover:scale-105 transition-transform">

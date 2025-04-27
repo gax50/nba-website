@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import nba from "../assets/NBA-Photoroom.png";
 import { CheckCircle } from "lucide-react"; //icn 
 import { AnimatePresence, motion } from "framer-motion"; //  animation
@@ -373,19 +374,17 @@ const cardsData = [
 
 
 ];
-
 const Card = ({ title, season, description, highlights }) => (
-  <div className=" card bg-white  px-10 py-8    rounded-xl shadow-lg text-left space-y-4 -mt-2 "style={{ fontFamily: "'Urbanist', sans-serif" }}>
-    <h3 className="text-[#2e3d91]  font-bold text-sm sm:text-lg">{title}</h3>
+  <div className="card bg-white px-8 py-6 rounded-xl shadow-lg text-left space-y-4 mt-2" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+    <h3 className="text-[#2e3d91] font-bold text-sm sm:text-lg">{title}</h3>
     <div className="flex items-center gap-2 text-[#2e3d91] font-semibold">
-      
       <h4 className="text-sm ">Saison : {season}</h4>
     </div>
     <p className="sm:text-sm text-[10px] text-gray-700">{description}</p>
     <ul className="list-none pl-0 sm:text-sm text-[10px] text-gray-600 mt-8">
       {highlights.map((item, idx) => (
         <li key={idx} className="flex items-center gap-2 mt-2">
-          <CheckCircle className=" sm:w-4 sm:h-4 w-3 h-3 text-green-500" />
+          <CheckCircle className="sm:w-4 sm:h-4 w-3 h-3 text-green-500" />
           {item}
         </li>
       ))}
@@ -394,36 +393,65 @@ const Card = ({ title, season, description, highlights }) => (
   </div>
 );
 
-
 const Photo = () => {
   const [pageIndex, setPageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+
+  const cardsPerPage = isMobile ? 1 : 3;
+  const totalPages = Math.ceil(cardsData.flat().length / cardsPerPage);
+  const currentCards = cardsData.flat().slice(
+    pageIndex * cardsPerPage,
+    (pageIndex + 1) * cardsPerPage
+  );
+
+  // Gestion du resize pour détecter mobile/desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 750);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Changement automatique de page toutes les 5 secondes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPageIndex(prevIndex => (prevIndex + 1) % totalPages);
+    }, 5000);
+
+    return () => clearInterval(interval); // Nettoyage à la destruction du composant
+  }, [totalPages]); 
 
   return (
-    <div className="stat bg-[#f4f9fa] px-7 py-10 md:mt-8 -mt-2 sm:px-18 xl:px-10" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+    <div
+      className="stat bg-[#f4f9fa] px-6 sm:px-10 lg:px-24 xl:px-20 py-6 md:mt-8 mt-5 mx-auto"
+      style={{ fontFamily: "'Urbanist', sans-serif" }}
+    >
       {/* Header */}
-      <div className="flex justify-between items-center mb-12">
+      <div className="flex justify-between items-center mb-8">
+        {/* Côté gauche */}
         <div className="flex items-center gap-2">
-          <img src={nba} alt="NBA logo" className="w-10 h-10" />
+          <img src={nba} alt="NBA logo" className="w-8 h-8" />
           <div>
-            <h2 className=" text-sm text-[#2e3d91] font-semibold">
+            <h2 className="text-xs sm:text-sm text-[#2e3d91] font-semibold">
               Moments Historiques de la NBA
             </h2>
-            <p className="italic font-bold text-sm">Team & Players</p>
+            <p className="italic font-bold text-xs sm:text-sm">Team & Players</p>
           </div>
         </div>
-
-        <div className="flex items-center gap-2  xl:flex hidden">
+        {/* Côté droit (affiché seulement sur xl) */}
+        <div className="items-center gap-2 xl:flex hidden">
           <div className="text-right">
-          <h2 className=" text-sm text-[#2e3d91] font-semibold">
+            <h2 className="text-xs sm:text-sm text-[#2e3d91] font-semibold">
               Moments Historiques de la NBA
             </h2>
-            <p className="italic font-bold text-sm">Team & Players</p>
+            <p className="italic font-bold text-xs sm:text-sm">Team & Players</p>
           </div>
-          <img src={nba} alt="NBA logo" className="w-10 h-10" />
+          <img src={nba} alt="NBA logo" className="w-8 h-8" />
         </div>
       </div>
 
-      {/* Cartey animation */}
+      {/* Cartes */}
       <AnimatePresence mode="wait">
         <motion.div
           key={pageIndex}
@@ -431,23 +459,25 @@ const Photo = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 xl:grid-cols-3 gap-11 mb-10"
+          className={`grid gap-4 mb-8 ${isMobile ? 'grid-cols-1' : 'xl:grid-cols-3'}`}
         >
-          {cardsData[pageIndex].map((card, idx) => (
-            <Card key={idx} {...card} />
+          {currentCards.map((card, idx) => (
+            <div key={idx} className="max-w-full w-full">
+              <Card {...card} />
+            </div>
           ))}
         </motion.div>
       </AnimatePresence>
 
       {/* Pagination */}
-      <div className="flex justify-center gap-5">
-        {cardsData.map((_, i) => (
+      <div className="flex justify-center gap-3 mt-20 flex-wrap">
+        {Array.from({ length: totalPages }).map((_, i) => (
           <button
             key={i}
             onClick={() => setPageIndex(i)}
-            className={`h-3 w-3 rounded-full transition-all duration-300 mt-8 ${
-              i === pageIndex ? "bg-indigo-500 scale-110 w-[20px]" : "bg-gray-300"
-            }`}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === pageIndex ? "bg-indigo-500 scale-110 w-4" : "bg-gray-300 w-2"
+            } ${isMobile ? 'my-1' : 'mx-1'}`}
           />
         ))}
       </div>

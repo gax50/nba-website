@@ -464,7 +464,7 @@ export default function Joueur() {
   };
 
   return (
-    <div className="p-15 mt-5" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+    <div className="p-10 sm:p-20 -mt-8" style={{ fontFamily: "'Urbanist', sans-serif" }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage} 
