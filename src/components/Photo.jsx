@@ -404,7 +404,7 @@ const Photo = () => {
     (pageIndex + 1) * cardsPerPage
   );
 
-  // Gestion du resize pour détecter mobile/desktop
+  // Gestion du resize 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 750);
@@ -413,13 +413,13 @@ const Photo = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Changement automatique de page toutes les 5 secondes
+
   useEffect(() => {
     const interval = setInterval(() => {
       setPageIndex(prevIndex => (prevIndex + 1) % totalPages);
-    }, 5000);
+    }, 7000);
 
-    return () => clearInterval(interval); // Nettoyage à la destruction du composant
+    return () => clearInterval(interval); 
   }, [totalPages]); 
 
   return (
@@ -427,9 +427,9 @@ const Photo = () => {
       className="stat bg-[#f4f9fa] px-6 sm:px-10 lg:px-24 xl:px-20 py-6 md:mt-8 mt-5 mx-auto"
       style={{ fontFamily: "'Urbanist', sans-serif" }}
     >
-      {/* Header */}
+      
       <div className="flex justify-between items-center mb-8">
-        {/* Côté gauche */}
+      
         <div className="flex items-center gap-2">
           <img src={nba} alt="NBA logo" className="w-8 h-8" />
           <div>
@@ -439,7 +439,7 @@ const Photo = () => {
             <p className="italic font-bold text-xs sm:text-sm">Team & Players</p>
           </div>
         </div>
-        {/* Côté droit (affiché seulement sur xl) */}
+        {/* Côté droit  seulement sur xl   */}
         <div className="items-center gap-2 xl:flex hidden">
           <div className="text-right">
             <h2 className="text-xs sm:text-sm text-[#2e3d91] font-semibold">
@@ -451,7 +451,7 @@ const Photo = () => {
         </div>
       </div>
 
-      {/* Cartes */}
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={pageIndex}
@@ -469,7 +469,9 @@ const Photo = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Pagination */}
+    
+
+
       <div className="flex justify-center gap-3 mt-20 flex-wrap">
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
