@@ -5,17 +5,17 @@ import back from '../assets/video-bg.png'
 const Nba = () => {
   return (
     <div
-      className="w-full h-[380px] sm:h-[350px] bg-cover bg-center px-1 py-4 z-0 mt-5"
+      className="w-full h-[380px] sm:h-[350px] bg-cover bg-center px-1 py-4 z-0 md:mt-5 mt-15"
       style={{ backgroundImage: `url(${back})` }}
     >
       <div className="flex items-center justify-center h-full gap-6 text-center">
        
         <div className="w-1/4 flex justify-center">
-          <img src={Imge} alt="Logo gauche" className="h-70 hidden md:block w-auto object-contain drop-shadow-[1px_2px_2px_black]" />
+          <img src={Imge} alt="Logo gauche" className="h-70 hidden lg:block w-auto object-contain drop-shadow-[1px_2px_2px_black]" />
         </div>
 
         {/* Texte au centre */}
-        <div className="w-2/4 "style={{ fontFamily: "'Urbanist', sans-serif"} }>
+        <div className="w-full  lg:w-2/4 "style={{ fontFamily: "'Urbanist', sans-serif"} }>
           <h1 className="font-semibold lg:text-2xl text-md text-gray-500  mb-10 sm:-mt-3 mt-5">
             La NBA c'est bien plus que du basket
           </h1>
@@ -26,7 +26,7 @@ const Nba = () => {
 
      
         <div className="w-1/4 flex justify-center -mt-2">
-          <img src= {Img}alt="Logo droite" className="hidden md:block h-65 w-auto object-contain drop-shadow-[1px_2px_2px_black] " />
+          <img src= {Img}alt="Logo droite" className="hidden lg:block h-65 w-auto object-contain drop-shadow-[1px_2px_2px_black] " />
         </div>
       </div>
     </div>

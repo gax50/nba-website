@@ -9,6 +9,7 @@ import All from './components/All';
 import Photo from './components/Photo';
 import Joueur from "./components/Joueur";
 import Plaque from "./components/Plaque";
+import Section from "./components/Section"
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           
            <Nba />
            <Plaque />
+           <Section />
             <br />
             <br />
             <br />

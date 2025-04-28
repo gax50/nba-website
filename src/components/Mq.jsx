@@ -87,7 +87,7 @@ const Mq1 = () => {
           <img
             src={basket1}
             alt="Basket 2"
-            className="yes  z-0 w-[140px] lg:-mt-[10px] h-[250px] md:ml-4   drop-shadow-[3px_3px_3px_black]  object-cover   md:h-[350px]  mt-[1px] z-10 sm:h-[350px] sm:w-[220px] sm:-mt-1 lg:w-75 lg:h-[450px] ml-7 xl:-mt-5"
+            className="yes  z-0 w-[160px] lg:-mt-[10px] h-[280px] md:ml-4   drop-shadow-[3px_3px_3px_black]  object-cover   md:h-[350px]  mt-[1px] z-10 sm:h-[350px] sm:w-[220px] sm:-mt-1 lg:w-75 lg:h-[450px] ml-7 xl:-mt-5"
           />
         
       </div>

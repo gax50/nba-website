@@ -46,7 +46,7 @@ const Navbar = () => {
     <header className="bg-[#001f3f] text-white px-4 py-3 shadow-md relative z-50">
       <div className="flex items-center justify-between w-full gap-5">
         {/* Logo principal */}
-        <div className="soratra flex items-center gap-2 md:text-lg text-sm font-bold z-20" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+        <div className="soratra flex items-center gap-2 md:text-lg text-sm font-bold z-20" style={{ fontFamily: "'Poppins', sans-serif" }}>
           <img src={logo} alt="maso" className="sary w-5 h-5 sm:h-7 sm:w-7" />
           <span>Nba <span className="text-blue-500">Vision</span></span>
         </div>

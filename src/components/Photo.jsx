@@ -477,8 +477,8 @@ const Photo = () => {
           <button
             key={i}
             onClick={() => setPageIndex(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === pageIndex ? "bg-indigo-500 scale-110 w-4" : "bg-gray-300 w-2"
+            className={`h-3 rounded-full transition-all duration-300 ${
+              i === pageIndex ? "bg-indigo-500 scale-110 w-5 " : "bg-gray-300 w-3"
             } ${isMobile ? 'my-1' : 'mx-1'}`}
           />
         ))}

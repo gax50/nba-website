@@ -464,7 +464,7 @@ export default function Joueur() {
   };
 
   return (
-    <div className="p-10 sm:p-20 -mt-8" style={{ fontFamily: "'Urbanist', sans-serif" }}>
+    <div className="p-2 mt-7 sm:-mt-1  sm:p-20 -mt-8" style={{ fontFamily: "'Urbanist', sans-serif" }}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentPage} 
@@ -472,7 +472,7 @@ export default function Joueur() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6"
         >
           {paginatedCards.map((card, index) => (
             <div
